@@ -2,14 +2,24 @@
   "name": "elysia-rest",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "test": "jest",
+    "dev": "bun run --watch src/index.ts",
+    "generate": "drizzle-kit generate:sqlite"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cors": "^0.7.2",
+    "drizzle-orm": "^0.29.1",
+    "drizzle-zod": "^0.5.1",
+    "elysia": "latest",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@elysiajs/swagger": "^0.7.4",
+    "@types/jest": "^29.5.10",
+    "@types/uuid": "^9.0.7",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.20.6",
+    "ts-jest": "^29.1.1"
   },
   "module": "src/index.js"
 }
