@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "4e34feae-11b3-479b-bc29-1400c4c07b5b",
+  "id": "cfd08ff6-9626-41f5-b006-1f491991d59d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "accounts": {
@@ -109,10 +109,51 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "sender_id": {
+          "name": "sender_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "receiver_id": {
+          "name": "receiver_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "operations_sender_id_accounts_id_fk": {
+          "name": "operations_sender_id_accounts_id_fk",
+          "tableFrom": "operations",
+          "tableTo": "accounts",
+          "columnsFrom": [
+            "sender_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "operations_receiver_id_accounts_id_fk": {
+          "name": "operations_receiver_id_accounts_id_fk",
+          "tableFrom": "operations",
+          "tableTo": "accounts",
+          "columnsFrom": [
+            "receiver_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }

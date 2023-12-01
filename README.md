@@ -1,5 +1,17 @@
 # Elysia with Bun runtime
 
+## About the project
+
+The goal of this project was to try out the Elysia framwork together with an ORM
+and the newest javascript runtime, Bun.
+
+### Tech stack
+
+- [ ] Elysia: web server framework
+- [ ] Drizzle: lightweight middleground between an ORM and a query builder
+- [ ] Jest-ts: testing framework for typescript
+- [ ] Bun: runtime
+
 ## Development
 
 - To start the development server run:

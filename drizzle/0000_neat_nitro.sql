@@ -14,5 +14,9 @@ CREATE TABLE `contacts` (
 CREATE TABLE `operations` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`date` integer NOT NULL,
-	`amount` integer NOT NULL
+	`amount` integer NOT NULL,
+	`sender_id` integer NOT NULL,
+	`receiver_id` integer NOT NULL,
+	FOREIGN KEY (`sender_id`) REFERENCES `accounts`(`id`) ON UPDATE no action ON DELETE no action,
+	FOREIGN KEY (`receiver_id`) REFERENCES `accounts`(`id`) ON UPDATE no action ON DELETE no action
 );

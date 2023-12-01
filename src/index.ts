@@ -34,6 +34,10 @@ const EgetAccountContacts = new Elysia()
         where: eq(models.account.account_number, number as models.AccountId),
       });
 
+      if (response.length === 0) {
+        throw new Error("No contacts found");
+      }
+
       return ZContactsList.parse(response);
     },
     {
@@ -84,7 +88,11 @@ const EpostTransfer = new Elysia()
       };
 
       // insert to table operations
-      return await db.insert(models.operation).values(newOperation);
+      try {
+        await db.insert(models.operation).values(newOperation);
+      } catch (error) {
+        throw new Error("Error inserting operation");
+      }
     },
     {
       query: t.Object({
@@ -95,11 +103,15 @@ const EpostTransfer = new Elysia()
       transform({ query }) {
         const from_number = +query.from_number;
         const to_number = +query.to_number;
+        const value = +query.value;
         if (!Number.isNaN(from_number)) {
           query.from_number = from_number;
         }
         if (!Number.isNaN(to_number)) {
           query.to_number = to_number;
+        }
+        if (!Number.isNaN(value)) {
+          query.value = value;
         }
       },
     },
@@ -110,16 +122,19 @@ const EgetAccountHistory = new Elysia()
   .get(
     "/account/history",
     async ({ query, db }) => {
-      return await db.query.operation.findMany({
+      const response = await db.query.operation.findMany({
         where: eq(models.operation.sender_id, query.number as models.AccountId),
       });
+      if (response.length === 0) {
+        throw new Error("No operations found");
+      }
     },
     {
       query: t.Object({
         number: t.Number(),
       }),
       transform({ query }) {
-        const number = +query.number;
+        const number: number = +query.number;
         if (!Number.isNaN(number)) {
           query.number = number;
         }
