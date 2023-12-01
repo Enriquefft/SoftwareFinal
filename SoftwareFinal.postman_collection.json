@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "1299c1e7-3d92-4fd3-a860-f280223fdfb1",
+		"name": "SoftwareFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31015337"
+	},
+	"item": [
+		{
+			"name": "getContacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/account/contacts?number=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"contacts"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/account/history?number=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"history"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postTransfer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/transfer?from_number=1&to_number=2&value=742",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "from_number",
+							"value": "1"
+						},
+						{
+							"key": "to_number",
+							"value": "2"
+						},
+						{
+							"key": "value",
+							"value": "742"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
