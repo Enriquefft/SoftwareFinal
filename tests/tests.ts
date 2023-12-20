@@ -10,7 +10,7 @@ import {
   EpostTransfer,
 } from "src/index";
 
-const db = new Database(":memory:");
+let db = new Database(":memory:");
 
 const TgetAccountContacts = EgetAccountContacts.decorate(
   "db",
